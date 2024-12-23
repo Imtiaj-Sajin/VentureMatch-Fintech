@@ -1,9 +1,7 @@
-import { Body, Controller, Post, Get, Param, UsePipes, ValidationPipe, Delete,UseGuards  } from '@nestjs/common';
+import { Body, Controller, Post, Get, Param, UsePipes, ValidationPipe, Delete } from '@nestjs/common';
 import { AddCompaniesDto } from './validation.dto';
 import { AddInvestorDto } from './validation.dto';
 import { SajinService } from './sajin.service';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
-
 
 @Controller('sajin')
 export class SajinController {
@@ -16,7 +14,6 @@ export class SajinController {
 
  
   @Get('/investors')
-  @UseGuards(JwtAuthGuard)
   viewAllInvestors() {
     return this.sajinService.viewAllInvestors();
   }
