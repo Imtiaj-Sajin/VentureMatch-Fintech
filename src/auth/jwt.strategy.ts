@@ -9,7 +9,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromExtractors([
         (req: Request) => {
-          return req.cookies?.jwt; // Extract JWT from cookies
+          return req.cookies?.jwt; 
         },
       ]),
       ignoreExpiration: false,
@@ -21,6 +21,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     if (!payload) {
       throw new UnauthorizedException();
     }
-    return { userId: payload.sub, username: payload.username }; // Customize as needed
+    return { userId: payload.sub, username: payload.username }; 
   }
 }
