@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+  import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('company_req') 
 export class company_req {
@@ -89,6 +89,32 @@ export class support_box {
   id: number;
 
 }
+
+
+@Entity('newsletter')
+export class Newsletter {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ length: 150 })
+  title: string;
+
+  @Column({ length: 250, nullable: true })
+  subtitle: string;
+
+  @Column({ type: 'text' })
+  body: string;
+
+  @Column({ length: 255, nullable: true })
+  thumbnailImg: string;
+
+  @Column({ type: 'simple-array', nullable: true })
+  keywords: string[]; 
+
+  @Column({ type: 'timestamp' })
+  postDateTime: Date;
+}
+
 
 
 

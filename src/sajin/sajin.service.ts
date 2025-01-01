@@ -3,6 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, IsNull, Not, Like } from 'typeorm';
 import { ArchivedCompanies, ArchivedInvestors, InvestorReq, company_req } from './sajin.entity';
 import { AddCompaniesDto, AddInvestorDto } from './validation.dto';
+import { Newsletter } from './sajin.entity';
+
 
 @Injectable()
 export class SajinService {
@@ -18,7 +20,10 @@ export class SajinService {
     private archived_investors_repository: Repository<ArchivedInvestors>,
 
     @InjectRepository(ArchivedCompanies)
-    private archived_companies_repository: Repository<ArchivedCompanies>
+    private archived_companies_repository: Repository<ArchivedCompanies>,
+
+    @InjectRepository(Newsletter)
+    private newsletterRepository: Repository<Newsletter>,
   ) {}
 
 
@@ -250,4 +255,35 @@ export class SajinService {
   async viewAllArchivedInvestors(){
     return this.archived_investors_repository.find();
   }
+
+
+  
+  
+  // ------newsletter---asdfasdfk---
+
+  createNewsletter(newsletterData: Partial<Newsletter>) {
+    const newsletter = this.newsletterRepository.create(newsletterData);
+    return this.newsletterRepository.save(newsletter);
+  }
+
+  findAllNews() {
+    return this.newsletterRepository.find();
+  }
+
+  findOneNews(id: number) {
+    return this.newsletterRepository.findOne(
+      { where:
+         { id } 
+          });
+  }
+
+  deleteNewsletter(id: number) {
+    return this.newsletterRepository.delete(id);
+  }
+
 }
+
+
+
+
+

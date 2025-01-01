@@ -3,6 +3,7 @@ import { AddCompaniesDto } from './validation.dto';
 import { AddInvestorDto } from './validation.dto';
 import { SajinService } from './sajin.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { Newsletter } from './sajin.entity';
 
 
 @Controller('sajin')
@@ -167,5 +168,37 @@ export class SajinController {
     }
 
 
+
+    // -----
+
+    @Post('/addNewsletter')
+  @UseGuards(JwtAuthGuard)
+  @UsePipes(new ValidationPipe())
+  addNewsletter(@Body() data: Newsletter) {
+    return this.sajinService.createNewsletter(data);
+    }
+
+   
+    @Get('/allNewsletter')
+    @UseGuards(JwtAuthGuard)
+    allNewsletter() {
+      return this.sajinService.findAllNews();
+    }
+
+    @Get('/newsletter/:id')
+    @UseGuards(JwtAuthGuard)
+      async findOneNews(@Param('id') id: number) {
+        return this.sajinService.findOneNews(id);
+      }
+    
+    // @Get(':id')
+    // findOne(@Param('id') id: number) {
+    //   return this.sajinService.findOne(id);
+    // }
+  
+    // @Delete(':id')
+    // delete(@Param('id') id: number) {
+    //   return this.sajinService.deleteNewsletter(id);
+    // }
 
 }

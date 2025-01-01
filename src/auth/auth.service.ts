@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
+  private readonly validEmail = 'imtiajsajin@gmail.com'; 
   private readonly validCredentials = { username: 'admin', password: 'admin' };
 
   constructor(private readonly jwtService: JwtService) {}
@@ -21,8 +22,13 @@ export class AuthService {
   }
 
   async validateUser(payload: any) {
-    return payload.username === this.validCredentials.username
-      ? payload
-      : null;
+    return payload.email === this.validEmail ? payload : null;
   }
+
+  async generateToken(email: string) {
+    const payload = { email };
+    const token = this.jwtService.sign(payload);
+    return { access_token: token };
+  }
+  
 }
