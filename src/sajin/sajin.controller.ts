@@ -172,7 +172,7 @@ export class SajinController {
     // -----
 
     @Post('/addNewsletter')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe())
   addNewsletter(@Body() data: Newsletter) {
     return this.sajinService.createNewsletter(data);
@@ -180,13 +180,13 @@ export class SajinController {
 
    
     @Get('/allNewsletter')
-    @UseGuards(JwtAuthGuard)
+    // @UseGuards(JwtAuthGuard)
     allNewsletter() {
       return this.sajinService.findAllNews();
     }
 
     @Get('/newsletter/:id')
-    @UseGuards(JwtAuthGuard)
+    // @UseGuards(JwtAuthGuard)
       async findOneNews(@Param('id') id: number) {
         return this.sajinService.findOneNews(id);
       }

@@ -13,7 +13,7 @@ import { company_req } from './sajin.entity';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'sajin',
+      password: '1234', //sajin
       database: 'sajin_wt',
       entities: [
           __dirname + '/../**/*.entity{.ts,.js}',
