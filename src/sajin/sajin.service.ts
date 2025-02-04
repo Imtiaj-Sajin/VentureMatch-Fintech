@@ -95,7 +95,10 @@ export class SajinService {
   
   async viewQueuedInvestors() {
     return this.investors_repository.find({
-      where: { admin_decision: 'Queued' },
+      where: [
+        { admin_decision: IsNull() },
+      { admin_decision: 'Queued' },
+      ],
     });
   }
 

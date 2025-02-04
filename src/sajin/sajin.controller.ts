@@ -16,60 +16,60 @@ export class SajinController {
 
  
   @Get('/investors')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   viewAllInvestors() {
     return this.sajinService.viewAllInvestors();
   }
   @Get('/investors/archived')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   viewAllArchivedInvestors() {
     return this.sajinService.viewAllArchivedInvestors();
   }
 
   @Get('/investors/pending')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   viewPendingInvestors() {
     return this.sajinService.viewPendingInvestors();
   }
 
   @Get('/investors/approved')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   viewApprovedInvestors() {
     return this.sajinService.viewApprovedInvestors();
   }
 
   @Get('/investors/rejected')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   viewRejectedInvestors() {
     return this.sajinService.viewRejectedInvestors();
   }
 
   @Get('/investors/queued')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   viewQueuedInvestors() {
     return this.sajinService.viewQueuedInvestors();
   }
     @Post('/addInvestor')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe())
     addInvestor(@Body() data: AddInvestorDto) {
     return this.sajinService.addInvestor(data);
     }
 
   @Post('/investors/searchByName/:name')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   searchInvestorByName(@Param('name') name: string) {
     return this.sajinService.searchInvestorByName(name);
     }
 
     @Post('/investors/searchById/:id')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   searchInvestorById(@Param('id') id: number) {
     return this.sajinService.searchInvestorById(id);
     }
 
     @Post('/investors/modify/:id')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe())
     async modifyInvestor(
       @Param('id') id: number,
@@ -80,7 +80,7 @@ export class SajinController {
 
 
     @Delete('/investors/delete/:id')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   async deleteInvestor(@Param('id') id: number) {
       return this.sajinService.deleteInvestor(id);
     }
@@ -90,38 +90,38 @@ export class SajinController {
 
   // -----------Companies-----------
   @Get('/companies')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   viewAllCompanies() {
     return this.sajinService.viewAllCompanies();
   }
   
   @Get('/companies/archived')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   viewAllArchivedCompanies() {
     return this.sajinService.viewAllArchivedCompanies();
   }
 
   @Get('/companies/pending')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   viewPendingCompanies() {
     return this.sajinService.viewPendingCompanies();
   }
 
   @Get('/companies/approved')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   viewApprovedCompanies() {
     return this.sajinService.viewApprovedCompanies();
   }
   
 
   @Get('/companies/rejected')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   viewRejectedCompanies() {
     return this.sajinService.viewRejectedCompanies();
   }
 
   @Get('/companies/queued')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   viewQueuedCompanies() {
     return this.sajinService.viewQueuedCompanies();
   }
@@ -129,7 +129,7 @@ export class SajinController {
   
 
     @Post('/companies/searchByName/:name')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   searchCompanyByName(@Param('name') name: string) {
       return this.sajinService.searchCompanyByName(name);
     }
@@ -137,21 +137,21 @@ export class SajinController {
   
     
     @Post('/companies/searchById/:id')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   searchCompanyById(@Param('id') id: number) {
       return this.sajinService.searchCompanyById(id);
     }
   
 
     @Post('/addCompanies')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe())
     addCompanies(@Body() data: AddCompaniesDto) {
       return this.sajinService.addCompany(data);
     }
 
     @Post('/companies/modify/:id')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe())
     async modifyCompany(
       @Param('id') id: number,
@@ -161,7 +161,7 @@ export class SajinController {
     }
 
     @Delete('/companies/delete/:id')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
     async deleteCompany(@Param('id') id: number) {
       return this.sajinService.deleteCompany(id);
     }
