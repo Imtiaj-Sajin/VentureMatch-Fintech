@@ -32,16 +32,32 @@ export class AuthController {
   @UseGuards(AuthGuard('google'))
   async googleLogin() {}
 
+  // @Get('google/callback')
+  // @UseGuards(AuthGuard('google'))
+  // async googleLoginCallback(@Req() req, @Res() res: Response) {
+  //   const user = req.user;
+  //   console.log(user);
+  //   // alert(user);
+  //   const { access_token } = await this.authService.generateToken(user.email);
+  //   res.cookie('jwt', access_token, { httpOnly: true, secure: true });
+  //   res.redirect('/auth/welcome'); 
+  // }
+
+
   @Get('google/callback')
-  @UseGuards(AuthGuard('google'))
-  async googleLoginCallback(@Req() req, @Res() res: Response) {
-    const user = req.user;
-    console.log(user);
-    // alert(user);
-    const { access_token } = await this.authService.generateToken(user.email);
-    res.cookie('jwt', access_token, { httpOnly: true, secure: true });
-    res.redirect('/auth/welcome'); 
-  }
+@UseGuards(AuthGuard('google'))
+async googleLoginCallback(@Req() req, @Res() res: Response) {
+  const user = req.user;
+  console.log("Google User:", user);
+
+  const { access_token } = await this.authService.generateToken(user.email);
+  
+  // Set JWT token in HTTP-only cookie for security
+  res.cookie('jwt', access_token, { httpOnly: true, secure: true });
+  
+  // Redirect back to frontend login page
+  res.redirect('http://localhost:3001/auth/login?googleSuccess=true');
+}
 
   @Get('welcome')
   @UseGuards(JwtAuthGuard)

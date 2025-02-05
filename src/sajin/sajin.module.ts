@@ -5,9 +5,10 @@ import { SajinService } from './sajin.service';
 import { DataSource } from 'typeorm';
 import { ArchivedCompanies, ArchivedInvestors, InvestorReq, Newsletter } from './sajin.entity'
 import { company_req } from './sajin.entity';
+import { LeadModule } from "../leads/lead.module";
 
 @Module({
-  imports: [TypeOrmModule.forFeature([InvestorReq,company_req,ArchivedInvestors,ArchivedCompanies, Newsletter     ]),
+  imports: [TypeOrmModule.forFeature([InvestorReq,company_req,ArchivedInvestors,ArchivedCompanies, Newsletter,LeadModule    ]),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
