@@ -8,9 +8,9 @@ import * as dotenv from 'dotenv';
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
   constructor() {
     super({
-      clientID: '558352867109-9m0u4k14inok7anaub2mctsil2mdui9l.apps.googleusercontent.com', 
-      clientSecret: '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', 
-      callbackURL: 'http://localhost:3000/auth/google/callback',
+      // clientID: '558352867109-9m0u4k14inok7anaub2mctsil2mdui9l.apps.googleusercontent.com', 
+      // clientSecret: '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', 
+      // callbackURL: 'http://localhost:3000/auth/google/callback',
       scope: ['email', 'profile'],
     });
     
