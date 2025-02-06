@@ -14,7 +14,7 @@ import { LeadModule } from "../leads/lead.module";
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: '1234', //sajin
+      password: 'sajin', //sajin
       database: 'sajin_wt',
       entities: [
           __dirname + '/../**/*.entity{.ts,.js}',

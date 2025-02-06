@@ -8,8 +8,9 @@ import * as dotenv from 'dotenv';
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
   constructor() {
     super({
-      
-      callbackURL: 'http://localhost:3000/auth/google/callback',
+      clientID: process.env.clientID, 
+      clientSecret: process.env.clientSecret, 
+      callbackURL: process.env.callbackURL,
       scope: ['email', 'profile'],
     });
     
@@ -24,7 +25,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     const { emails } = profile;
     const email = emails[0].value;
 
-    if (email !== 'rkakashi585@gmail.com') {
+    if (email !== 'imtiajsajin@gmail.com') {
       done(new UnauthorizedException('Email is not authorized'), null);
     } else {
       const user = {
